@@ -1,0 +1,158 @@
+2021-07-02 23:28:45,062 - root - INFO - python train.py --skip_train 1 --pretrain 
+2021-07-02 23:28:45,062 - root - INFO - Namespace(area_dim=10, argv='train.py', batch_size=20, box_refine=True, box_refine_arch='I15,C3-64-2,C3-128-2,C3-256-2', coverage=1, dataset_dir='./data', debug=0, decay_rate=0.0001, embedding_dim=128, epoch=101, gene_layout=True, gpu='0', gt_box=0, image_size=(128, 128), input_dim=3, inside=1, learning_rate=0.0001, loss_refine=0, multi_gpu=None, mutex=1, n_saved=20, nsample=100, optimizer='Adam', pos_dim=25, pretrain=None, refinement_dims=(1024, 512, 256, 128, 64), relative=1, render=1, render_refine=0, roi_cat_feature=True, save_interval=5, scheduler='plateau', seed=74269, skip_train=0, start_epoch=None, step_rate=0.5, step_size=10, suffix=None, test=0, train_shuffle=True, with_house=False, workers=8)
+2021-07-02 23:28:45,062 - root - INFO - ---------------------------------------------------TRANING---------------------------------------------------
+2021-07-02 23:28:45,062 - root - INFO - Use seed: 74269
+2021-07-02 23:28:52,334 - root - INFO - Namespace(attribute_dim=35, box_refine_arch='I15,C3-64-2,C3-128-2,C3-256-2', embedding_dim=128, image_size=(128, 128), input_dim=3, refinement_dims=(1024, 512, 256, 128, 64), roi_cat_feature=True)
+2021-07-02 23:28:52,335 - root - INFO - Model(
+  (obj_embeddings): Embedding(15, 128)
+  (pred_embeddings): Embedding(10, 128)
+  (gconv): GraphTripleConv(
+    (net1): Sequential(
+      (0): Linear(in_features=454, out_features=512, bias=True)
+      (1): LeakyReLU(negative_slope=0.01)
+      (2): Linear(in_features=512, out_features=1152, bias=True)
+      (3): LeakyReLU(negative_slope=0.01)
+    )
+    (net2): Sequential(
+      (0): Linear(in_features=512, out_features=512, bias=True)
+      (1): LeakyReLU(negative_slope=0.01)
+      (2): Linear(in_features=512, out_features=128, bias=True)
+      (3): LeakyReLU(negative_slope=0.01)
+    )
+  )
+  (gconv_net): GraphTripleConvNet(
+    (gconvs): ModuleList(
+      (0): GraphTripleConv(
+        (net1): Sequential(
+          (0): Linear(in_features=384, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=1152, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+        (net2): Sequential(
+          (0): Linear(in_features=512, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=128, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+      )
+      (1): GraphTripleConv(
+        (net1): Sequential(
+          (0): Linear(in_features=384, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=1152, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+        (net2): Sequential(
+          (0): Linear(in_features=512, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=128, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+      )
+      (2): GraphTripleConv(
+        (net1): Sequential(
+          (0): Linear(in_features=384, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=1152, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+        (net2): Sequential(
+          (0): Linear(in_features=512, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=128, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+      )
+      (3): GraphTripleConv(
+        (net1): Sequential(
+          (0): Linear(in_features=384, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=1152, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+        (net2): Sequential(
+          (0): Linear(in_features=512, out_features=512, bias=True)
+          (1): LeakyReLU(negative_slope=0.01)
+          (2): Linear(in_features=512, out_features=128, bias=True)
+          (3): LeakyReLU(negative_slope=0.01)
+        )
+      )
+    )
+  )
+  (inside_cnn): Sequential(
+    (0): Sequential(
+      (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2))
+      (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): LeakyReLU(negative_slope=0.01)
+      (3): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2))
+      (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): LeakyReLU(negative_slope=0.01)
+      (6): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2))
+      (7): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): LeakyReLU(negative_slope=0.01)
+      (9): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2))
+    )
+    (1): AdaptiveAvgPool2d(output_size=1)
+  )
+  (box_net): Sequential(
+    (0): Linear(in_features=384, out_features=512, bias=True)
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): Linear(in_features=512, out_features=4, bias=True)
+    (3): LeakyReLU(negative_slope=0.01)
+  )
+  (rel_aux_net): Sequential(
+    (0): Linear(in_features=384, out_features=512, bias=True)
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): Linear(in_features=512, out_features=13, bias=True)
+    (3): LeakyReLU(negative_slope=0.01)
+  )
+  (refinement_net): Sequential(
+    (0): Conv2d(384, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.01)
+    (3): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): LeakyReLU(negative_slope=0.01)
+    (6): Conv2d(64, 15, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (box_refine_backbone): Sequential(
+    (0): Conv2d(15, 64, kernel_size=(3, 3), stride=(2, 2))
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): LeakyReLU(negative_slope=0.01)
+    (3): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2))
+    (4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): LeakyReLU(negative_slope=0.01)
+    (6): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2))
+  )
+  (roi_align): RoIAlign(output_size=(8, 8), spatial_scale=0.125, sampling_ratio=-1, aligned=False)
+  (down_sample): AdaptiveAvgPool2d(output_size=1)
+  (box_reg): Sequential(
+    (0): Linear(in_features=640, out_features=512, bias=True)
+    (1): LeakyReLU(negative_slope=0.01)
+    (2): Linear(in_features=512, out_features=4, bias=True)
+    (3): LeakyReLU(negative_slope=0.01)
+  )
+)
+2021-07-02 23:28:55,018 - ignite.engine.engine.Engine - INFO - Engine run starting with max_epochs=101.
+2021-07-02 23:31:34,733 - ignite.engine.engine.Engine - INFO - Epoch[1] Complete. Time taken: 00:02:39
+2021-07-02 23:31:34,733 - ignite.engine.engine.Engine - INFO - Engine run starting with max_epochs=1.
+2021-07-02 23:34:35,242 - ignite.engine.engine.Engine - INFO - Epoch[1] Complete. Time taken: 00:03:00
+2021-07-02 23:34:35,243 - root - INFO - Valid, Epoch1, Loss: {'box_mse': 0.0011768914991989732, 'total_loss': 0.0011768914991989732}
+2021-07-02 23:34:35,244 - root - INFO - Valid, Epoch1, Metrics: {'loss': 0.0011768914991989732, 'box_iou': 0.4696271552187636, 'gene_acc': 0.011678900968090971, 'box_refine_iou': 0.0, 'box_mse': 0.0011768914991989732, 'total_loss': 0.0011768914991989732}
+2021-07-02 23:34:35,309 - ignite.engine.engine.Engine - INFO - Engine run complete. Time taken 00:03:00
+2021-07-02 23:34:35,310 - root - INFO - Train, Epoch1, Loss: {'box_mse': 0.0010565081611275673, 'total_loss': 0.0010565081611275673}
+2021-07-03 00:22:07,324 - ignite.engine.engine.Engine - INFO - Epoch[2] Complete. Time taken: 00:47:31
+2021-07-03 00:22:07,326 - ignite.engine.engine.Engine - INFO - Engine run starting with max_epochs=1.
+2021-07-03 00:25:10,634 - ignite.engine.engine.Engine - INFO - Epoch[1] Complete. Time taken: 00:03:03
+2021-07-03 00:25:10,635 - root - INFO - Valid, Epoch1, Loss: {'box_mse': 0.0016096795443445444, 'total_loss': 0.0016096795443445444}
+2021-07-03 00:25:10,635 - root - INFO - Valid, Epoch1, Metrics: {'loss': 0.0016096795443445444, 'box_iou': 0.4749234038357986, 'gene_acc': 0.7704153515793227, 'box_refine_iou': 0.0, 'box_mse': 0.0016096795443445444, 'total_loss': 0.0016096795443445444}
+2021-07-03 00:25:10,644 - ignite.engine.engine.Engine - INFO - Engine run complete. Time taken 00:03:03
+2021-07-03 00:25:10,644 - root - INFO - Train, Epoch2, Loss: {'gene_ce': 0.04347963258624077, 'box_mse': 0.0016044009244069457, 'mutex': 5.367178891901858e-05, 'inside': 1.2253311069798656e-05, 'coverage': 2.4887636755011044e-05, 'render': 0.0037347269244492054, 'total_loss': 0.04890957102179527}
+2021-07-03 01:15:03,772 - ignite.engine.engine.Engine - INFO - Epoch[3] Complete. Time taken: 00:49:52
+2021-07-03 01:15:03,774 - ignite.engine.engine.Engine - INFO - Engine run starting with max_epochs=1.
+2021-07-03 01:18:07,753 - ignite.engine.engine.Engine - INFO - Epoch[1] Complete. Time taken: 00:03:03
+2021-07-03 01:18:07,754 - root - INFO - Valid, Epoch1, Loss: {'box_mse': 0.002215401502326131, 'total_loss': 0.002215401502326131}
+2021-07-03 01:18:07,755 - root - INFO - Valid, Epoch1, Metrics: {'loss': 0.002215401502326131, 'box_iou': 0.43453835176732025, 'gene_acc': 0.7890289615612845, 'box_refine_iou': 0.4927422385195644, 'box_mse': 0.002215401502326131, 'total_loss': 0.002215401502326131}
+2021-07-03 01:18:07,765 - ignite.engine.engine.Engine - INFO - Engine run complete. Time taken 00:03:03
+2021-07-03 01:18:07,766 - root - INFO - Train, Epoch3, Loss: {'gene_ce': 0.1913641393184662, 'box_mse': 0.001863418030552566, 'box_ref_mse': 8.901255205273628e-05, 'mutex': 4.847316085943021e-05, 'inside': 5.433851038105786e-05, 'coverage': 1.4476405340246856e-05, 'render': 0.00369580602273345, 'total_loss': 0.19712966680526733}
